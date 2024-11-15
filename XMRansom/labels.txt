@@ -11,7 +11,7 @@ YOU NEED TO SEND 5$ TO THE XMR ADDRESS!
 --- end ---
 --- XMR_Address ---
 XMR Address: 
-88t4qQv1T8VdnhmGWbWJz445BTNavMDDSKyyHHoTbTnNjaVWh4BCQB7SqmKpqNF56yPj6yqUG1TCg1bEUh5GrWruQK1mPPf
+49cg2BTsCdmBfUPsCrDsGmREn2diVYSKUahupm2bay5ZU3gmVTzuwgY7yhQcbYCdEeZXSHsYLZKLWXTR4DNR3xcJS29HszU
 --- end ---
 --- XMR_tutorial ---
 HOW TO SEND XMR
